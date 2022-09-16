@@ -93,7 +93,7 @@ export const networkInfo = new Map<number, NetworkInfo>([
       name: "Fantom",
       shortName: "ftm",
       currencySymbol: "FTM",
-      baseAPI: "https://safe-txservice.fantom.network/",
+      baseAPI: "safe-txservice.fantom.network/api/v1",
     },
   ],
   [
