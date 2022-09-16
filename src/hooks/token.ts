@@ -49,7 +49,18 @@ export const fetchTokenList = async (chainId: number): Promise<TokenMap> => {
       tokens = xdaiTokens.tokens;
       break;
     case 250:
-      tokens = [];
+      tokens = [
+        {
+          name: "USDC",
+          symbol: "usdc",
+          address: "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+          chainId: 250,
+          decimals: 6,
+          logoURI:
+            "https://assets.coingecko.com/coins/images/20266/thumb/0949bddc836d95169980ae5fc826a441.jpg?1636704622",
+        },
+      ];
+      break;
     default:
       console.warn(`Unimplemented token list for ${networkInfo.get(chainId)?.name} network`);
       tokens = [];
