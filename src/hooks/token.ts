@@ -1,6 +1,7 @@
 import { SafeAppProvider } from "@gnosis.pm/safe-apps-provider";
 import { useSafeAppsSDK } from "@gnosis.pm/safe-apps-react-sdk";
 import { ethers, utils } from "ethers";
+import { responsePathAsArray } from "graphql";
 import xdaiTokens from "honeyswap-default-token-list";
 import { useState, useEffect, useMemo } from "react";
 
@@ -37,9 +38,18 @@ export const fetchTokenList = async (chainId: number): Promise<TokenMap> => {
       // Doesn't have GNO or OWL and/or many others.
       tokens = rinkeby;
       break;
+    case 56:
+      const bscURL = "https://raw.githubusercontent.com/pancakeswap/token-list/main/lists/coingecko.json";
+      tokens = await fetch(bscURL)
+        .then((response) => response.json())
+        .then((response) => response.tokens)
+        .catch(() => []);
+      break;
     case 100:
       tokens = xdaiTokens.tokens;
       break;
+    case 250:
+      tokens = [];
     default:
       console.warn(`Unimplemented token list for ${networkInfo.get(chainId)?.name} network`);
       tokens = [];
