@@ -87,6 +87,16 @@ export const networkInfo = new Map<number, NetworkInfo>([
     },
   ],
   [
+    250,
+    {
+      chainID: 250,
+      name: "Fantom",
+      shortName: "ftm",
+      currencySymbol: "FTM",
+      baseAPI: "https://safe-txservice.fantom.network/",
+    },
+  ],
+  [
     42161,
     {
       chainID: 42161,
